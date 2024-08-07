@@ -1,0 +1,62 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <style>
+        .box{
+            width: 200px;
+            height: 200px;
+            border: 4px solid black;
+            background-color: rgb(222, 244, 252);
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            margin: 10px;
+            transition: background-color 0.5s ease;
+        }
+        .flex-cont{
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+    </style>
+</head>
+<body>
+    <h1>Hello Vue</h1>
+    <div id="app">
+
+        <div v-if="showBooks">
+                <ul>
+                    <li v-for="book in books" :key="book.id">
+                        {{ book.title }} - {{ book.author }}
+                    </li>
+                </ul>
+             <br>
+            <div @click="changeTitle">Change Title</div>
+        </div>       
+        <button @click="toggleShowBooks"> 
+            <span v-if="showBooks">Hide Books</span>
+            <span v-else>Show Books</span>
+        </button>
+
+        <br>
+
+        <div class="flex-cont">
+
+            <div @mouseover="handleEvent($event, 5)" class="box">mouseover</div>
+            <div @mouseleave="handleEvent" class="box">mouseleave</div>
+            <div @dblclick="handleEvent" class="box">double click</div>
+            <div @mousemove="handleMouseMove" class="box">Position {{ x }} - {{ y }}</div>
+
+        </div>
+        
+
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
